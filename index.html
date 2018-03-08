@@ -11,49 +11,56 @@
 </head>
 
 <body>
-    <div class="header">
-        <h1>Rev My $</h1>  
-        <h3>Hello, yourName</h3>
-    </div>
 
     <!--Top Section of Website  -->
-    <div class="container1">
-
-        <!--Monthly Savings  - Top Left-->
-        <div class="container1-1">
-            <h4>Monthly Savings</h4>   
-
-            <!--monthly savings goal input  -->
-            <div class="monthlySavings">
-                <label for="savingsGoal">Savings Goal</label>
-                <input class="form-control" type="number" name="savingsGoal" id="savingsGoal" value="" placeholder="Monthly Savings Goal" required>
-                <p>Actual Savings</p>
-                <p class="actualSavingsCalculation">Empty Box for Calculation</p>
-                <p>Did you Meet your GOAL?</p>
-                <p class="wasGoalAchieved">Empty Box for YES/NO</p>
-            </div>
-        </div>
-
-        <!--Savings Goal Tracker - graph  - Top Middle-->
-        <div class="container1-2">
-            <h4>Daily Savings Goal Tracker</h4>
-            <p>Pull in Graph API</p>
-        </div> 
+    
+    <div id="imageWrap" style="background-image:url('images/Money.jpg')">
         
-        <!--Goals and Expenses - Top Right -->
-        <div class="container1-3">
-            <h4>Income | Goals | Expenses</h4>
-             <!--monthly income input  -->
-            <div class="goalsAndExpenses">
-                <p class="dailySpendingGoalCalculation">Daily Spending Goal</p>
-                <p class="actualDailySpendingCalculation">Daily Spending</p>
-                <p class="balanceCalculation">Balance</p>
-                <label for="MonthlyIncome">Monthly Income</label>
-                <input class="form-control " type="number" name="income" id="monthlyIncome" value="" autofocus placeholder="Monthly Income" required>
-                <p class="totalFixedExpenseCalculation">Fixed Expenses</p>
-                <p class="totalMonthlyExpensesCalculation">Total Monthly Expenses</p>
+        <div class="container1">
+        
+            <!--Monthly Savings  - Top Left-->
+            
+            <div class="container1-1">
+                <h4>Monthly Savings</h4>   
+    
+                <!--monthly savings goal input  -->
+                
+                <div class="monthlySavings">
+                    <label for="savingsGoal">Savings Goal</label>
+                    <input class="form-control" type="number" name="savingsGoal" id="savingsGoal" value="" placeholder="Monthly Savings Goal" required>
+                    <p>Actual Savings</p>
+                    <input class="actualSavingsCalculation" type="number" name="savingsGoal" id="savingsGoal" value="" disabled/>
+                    <p>Did you Meet your GOAL?</p>
+                    <input class="wasGoalAchieved" type="text" name="savingsGoal" id="savingsGoal" value="" disabled/>
+                </div>
             </div>
-        </div> 
+
+            <!--Daily Savings Graph -->
+
+            <div class="container1-2">
+                <h4>Daily Savings Goal Tracker</h4>
+                <p>Pull in Graph API</p>
+            </div> 
+            
+            <!--Goals and Expenses - Top Right -->
+            
+            <div class="container1-3">
+                <h4>Income | Goals | Expenses</h4>
+                 
+                <!--monthly income input  -->
+                
+                <div class="goalsAndExpenses">
+                    <p class="dailySpendingGoalCalculation">Daily Spending Goal</p>
+                    <p class="actualDailySpendingCalculation">Daily Spending</p>
+                    <p class="balanceCalculation">Balance</p>
+                    <label for="MonthlyIncome">Monthly Income</label>
+                    <input class="form-control " type="number" name="income" id="monthlyIncome" value="" autofocus placeholder="Monthly Income" required>
+                    <p class="totalFixedExpenseCalculation">Fixed Expenses</p>
+                    <p class="totalMonthlyExpensesCalculation">Total Monthly Expenses</p>
+                </div>
+            </div>
+
+        </div>
     </div>
 
     <!--Table Section of Website  -->
