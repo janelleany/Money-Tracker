@@ -7,7 +7,7 @@ var incomeDiv = document.querySelector("#divForIncome");
 // variables: CREATE userData OBJECT FOR USER DATA
 var userData = {
     userName: "",
-    income: monthlyIncome.value
+    income: 0
 };
 
 
@@ -25,6 +25,9 @@ var createNew = function(tagName, className, attribute, attributeValue) {
 var hitEnter = function(event) {
     var keyHit = event.key;
     if (keyHit === "Enter") {
+        while (incomeDiv.hasChildNodes()) {
+            incomeDiv.removeChild(incomeDiv.lastChild);   
+        }
         var newSpan = createNew("span");
         newSpan.textContent = " $" + monthlyIncome.value;
         incomeDiv.appendChild(newSpan);
