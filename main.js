@@ -1,8 +1,17 @@
 // variables: QUERY & NAME THE DOM ELEMENTS WE NEED TO WORK WITH
-var monthlyIncome = document.querySelector("[name='income']");
+var monthlyIncome = document.querySelector("#monthlyIncome");
 var incomeContainer = document.querySelector(".goalsAndExpenses");
+var incomeDiv = document.querySelector("#divForIncome");
 
-// function: CREATE A NEW DOM ELEMENT & GIVE IT A CLASS & ATTRIBUTES
+
+// variables: CREATE userData OBJECT FOR USER DATA
+var userData = {
+    userName: "",
+    income: monthlyIncome.value
+};
+
+
+// function: CREATE A GENERIC NEW DOM ELEMENT & GIVE IT A CLASS & ATTRIBUTES
 var createNew = function(tagName, className, attribute, attributeValue) {
     var newElement = document.createElement(tagName);
     newElement.classList.add(className);
@@ -12,25 +21,17 @@ var createNew = function(tagName, className, attribute, attributeValue) {
 // the end
 
 
-// create newUL DOM element for newestOrder.
-var newUL = createNew("ul", "orderUL", "style", "list-style-type: square;");
-newUL.addEventListener("click", function() {
-    orderContainer.removeChild(newUL);
-});
-
-// loop through values in newestOrder object and forEach: create newLI DOM element via _f_createNew, set text to the newestOrder value/currentOrderElement, & append to newUL
-Object.values(newestOrder).forEach(function(currentOrderElement) {
-    var newLI = createNew("li", "orderLI");
-    newLI.textContent = currentOrderElement;
-    newUL.appendChild(newLI);
-});
-
-// append newUL DOM element to parent div DOM element.
-orderContainer.appendChild(newUL);
-
-// push newestOrder object to orders array
-orders.push(newestOrder);
-console.log(orders);
-
+// function: PRESS ENTER EVENT HANDLER
+var hitEnter = function(event) {
+    var keyHit = event.key;
+    if (keyHit === "Enter") {
+        var newSpan = createNew("span");
+        newSpan.textContent = " $" + monthlyIncome.value;
+        incomeDiv.appendChild(newSpan);
+    } else {
+        return;
+    }
 };
-// the end
+
+
+incomeContainer.addEventListener("keyup", hitEnter);
