@@ -26,12 +26,15 @@
                 <!--monthly savings goal input  -->
                 
                 <div class="monthlySavings">
-                    <label for="savingsGoal">Savings Goal</label>
-                    <input class="form-control" type="number" name="savingsGoal" id="savingsGoal" value="" placeholder="Monthly Savings Goal" required>
-                    <p>Actual Savings</p>
+                    <p class="MonthlyIncome">Monthly Income</p>
+                    <input class="form-control " type="number" name="income" id="monthlyIncome" value="" autofocus placeholder="Enter Monthly Income" required>
+                    <div id="divForIncome"></div>
+                    <p class="savingsGoal">Monthly Savings Goal</p>
+                    <input class="form-control" type="number" name="savingsGoal" id="savingsGoal" value="" placeholder="Enter Monthly Savings Goal" required>
+                    <p>Actual Monthly Savings</p>
                     <input class="actualSavingsCalculation" type="number" name="savingsGoal" id="savingsGoal" value="" disabled/>
-                    <p>Did you Meet your GOAL?</p>
-                    <input class="wasGoalAchieved" type="text" name="savingsGoal" id="savingsGoal" value="" disabled/>
+                    <!-- <p>Did you Meet your GOAL?</p>
+                    <input class="wasGoalAchieved" type="text" name="savingsGoal" id="savingsGoal" value="" disabled/> -->
                 </div>
             </div>
 
@@ -41,6 +44,8 @@
                 <h4>Daily Savings Goal Tracker</h4>
                 <div>Pull in Graph API</div>
                 <div>Today's date API</div>
+                <p class="balanceCalculation">Daily Balance</p>
+                    <input class="form-control " type="number" name="balance" id="balance" value="" autofocus disabled>
             </div> 
             
             <!--Goals and Expenses - Top Right -->
@@ -51,14 +56,14 @@
                 <!--monthly income input  -->
                 
                 <div class="goalsAndExpenses">
-                    <p class="dailySpendingGoalCalculation">Daily Spending Goal</p>
-                    <p class="actualDailySpendingCalculation">Daily Spending</p>
-                    <p class="balanceCalculation">Balance</p>
-                    <label for="MonthlyIncome">Monthly Income</label>
-                    <input class="form-control " type="number" name="income" id="monthlyIncome" value="" autofocus placeholder="Monthly Income" required>
-                    <div id="divForIncome"></div>
-                    <p class="totalFixedExpenseCalculation">Fixed Expenses</p>
+                    <p class="dailySpendingLimitCalculation">Daily Spending Limit</p>
+                    <input class="form-control " type="number" name="spendingLimit" id="spendingLimit" value="" autofocus disabled>
+                    <p class="actualDailySpendingCalculation">Actual Daily Spending</p>
+                    <input class="form-control " type="number" name="dailyTotal" id="dailyTotal" value="" autofocus disabled>
+                    <p class="totalFixedExpenseCalculation">Fixed Monthly Expenses</p>
+                    <input class="form-control " type="number" name="fixedExpenseTotal" id="fixedExpenseTotal" value="" autofocus disabled>
                     <p class="totalMonthlyExpensesCalculation">Total Monthly Expenses</p>
+                    <input class="form-control " type="number" name="totalMonthlyExpenses" id="totalMonthlyExpenses" value="" autofocus disabled>
                 </div>
             </div>
 
@@ -125,22 +130,24 @@
                                  <td class="tg-yw4l"></td>
                                  <td class="tg-lqy6"></td>
                               </tr>
-                              <tr>
+                              <!-- <tr>
                                  <td class="tg-yw4l"></td>
                                  <td class="tg-lqy6"></td>
                               </tr>
                                  <tr>
                                  <td class="tg-yw4l"></td>
                                  <td class="tg-lqy6"></td>
-                             </tr>
+                             </tr> -->
                             </table></div>
             <!-- </div> -->
             <div class="container2-1-2">
+                <div>
                     <label for="todaysExpenses">Amount</label>
                     <input class="form-control" type="number" name="expenses" id="todaysExpenses" value="" autofocus placeholder="Enter Expense Amount">
-                    <div class="form-group expenseCategory">
-                            <label for="expenseCategory">Expense Category</label>
-                            <select id="expenseCategory" class="form-control" name="expenseType">
+                </div>
+                <div class="form-group expenseCategory">
+                            <label for="todaysExpenseCategory">Expense Category</label>
+                            <select id="todaysExpenseCategory" class="form-control" name="expenseType">
                               <option value="fuel">Fuel</option>
                               <option value="shopping">Shopping</option>
                               <option value="clothes">Clothes</option>
@@ -148,10 +155,9 @@
                               <option value="entertainment">Entertainment</option>
                               <option value="">Other</option>
                             </select>
-                    </div>
+                </div>
                     <div class="buttons">
                             <button data-type-button="submit" type="submit" class="btn btn-default">Submit</button>
-                            <button type="reset" class="btn btn-default">Reset</button>
                     </div>
             </div>
         </div>
@@ -212,22 +218,24 @@
                                  <td class="tg-yw4l"></td>
                                  <td class="tg-lqy6"></td>
                               </tr>
-                              <tr>
+                              <!-- <tr>
                                  <td class="tg-yw4l"></td>
                                 <td class="tg-lqy6"></td>
                               </tr>
                               <tr>
                                  <td class="tg-yw4l"></td>
                                  <td class="tg-lqy6"></td>
-                              </tr>
+                              </tr> -->
                             </table></div>        
             <!-- </div> -->
                 <div class="container2-1-2">
+                    <div>
                         <label for="todaysExpenses">Amount</label>
                         <input class="form-control" type="number" name="expenses" id="todaysExpenses" value="" autofocus placeholder="Enter Expense Amount">
+                    </div>
                         <div class="form-group expenseCategory">
-                                <label for="expenseCategory">Expense Category</label>
-                                <select id="expenseCategory" class="form-control" name="expenseType">
+                                <label for="fixedExpenseCategory">Expense Category</label>
+                                <select id="fixedExpenseCategory" class="form-control" name="expenseType">
                                   <option value="rent">Rent</option>
                                   <option value="car">Car</option>
                                   <option value="phone">Utilities</option>
@@ -236,7 +244,6 @@
                         </div>
                         <div class="buttons">
                                 <button data-type-button="submit" type="submit" class="btn btn-default">Submit</button>
-                                <button type="reset" class="btn btn-default">Reset</button>
                         </div>
                 </div>
         </div>
