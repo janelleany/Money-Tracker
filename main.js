@@ -7,18 +7,17 @@ var fixedExpensesTable = document.querySelector("#fixedExpensesTable");
 var fixedExpenseInput = document.querySelector("#fixedExpenseInput");
 var fixedExpenseInputButton = document.querySelector("#fixedExpenseInputButton");
 var fixedExpenseCategory = document.querySelector("#fixedExpenseCategory");
-var fixedExpenseTotal = document.querySelector("#fixedExpenseTotal");
-
-var currentFixedTotal = 0;
+var fixedExpenseTotalDiv = document.querySelector("#fixedExpenseTotal");
 
 // variables: CREATE userData OBJECT FOR BUDGETER'S DATA
 var userData = {
     userName: "",
     income: 0,
     savingsGoal: 0,
-    fixedExpenses: {
+    currentFixedTotal: 0, 
+    fixedExpenses: [
 
-    }
+    ]
 }
 
 
@@ -40,7 +39,7 @@ var hitEnterForIncome = function(event) {
             incomeDiv.removeChild(incomeDiv.lastChild);   
         }
         var newP = createNew("p");
-        newP.textContent = " $" + monthlyIncomeInput.value;
+        newP.textContent = "$" + monthlyIncomeInput.value;
         incomeDiv.appendChild(newP);
         userData.income = monthlyIncomeInput.value;
         console.log(userData.income);
@@ -50,6 +49,7 @@ var hitEnterForIncome = function(event) {
 }
 // the end
 
+
 // function: PRESS & RELEASE THE ENTER KEY EVENT HANDLER FOR SAVINGS
 var hitEnterForSavingsGoal = function(event) {
     var keyHit = event.key;
@@ -58,7 +58,7 @@ var hitEnterForSavingsGoal = function(event) {
             savingsGoalDiv.removeChild(savingsGoalDiv.lastChild);   
         }
         var newP = createNew("p");
-        newP.textContent = " $" + savingsGoalInput.value;
+        newP.textContent = "$" + savingsGoalInput.value;
         savingsGoalDiv.appendChild(newP);
         userData.savingsGoal = savingsGoalInput.value;
         console.log(userData.savingsGoal);
@@ -70,28 +70,35 @@ var hitEnterForSavingsGoal = function(event) {
 
 
 // function: CLICK SUBMIT EVENT HANDLER FOR A FIXED EXPENSE
-var hitEnterforFixedExpense = function(event) {
-    var newTR = createNew("tr", "newExpense");
-    
+var hitEnterforFixedExpense = function() {
+    var newTR = createNew("tr");
     var newCategoryTD = createNew("td", "tg-yw4l");
-    newCategoryTD.textContent = fixedExpenseCategory.value;
+    var newCategoryValue = fixedExpenseCategory.value;
+    newCategoryTD.textContent = newCategoryValue;
     newTR.appendChild(newCategoryTD);
 
     var newAmountTD = createNew("td", "tg-lqy6");
-    newAmountTD.textContent = " $" + fixedExpenseInput.value;
+    var newAmountValue = fixedExpenseInput.value;
+    newAmountTD.textContent = "$" + newAmountValue;
     newTR.appendChild(newAmountTD);
     
     fixedExpensesTable.appendChild(newTR);
 
-    var newestExpense = parseInt(fixedExpenseInput.value);
+    var newestFixedExpenseAmount = parseInt(fixedExpenseInput.value);
 
-    currentFixedTotal += newestExpense;
+    userData.currentFixedTotal += newestFixedExpenseAmount;
 
-    var fixedTotalNode = createNew("span");
-    fixedTotalNode.textContent = currentFixedTotal;
-    fixedExpenseTotal.appendChild(fixedTotalNode);
-
-    console.log(currentFixedTotal);
+    var newestFixedExpense = {};
+    newestFixedExpense[newCategoryValue] = newAmountValue;
+    console.log(newestFixedExpense);
+    userData.fixedExpenses.push(newestFixedExpense);
+    
+    while (fixedExpenseTotalDiv.hasChildNodes()) {
+        fixedExpenseTotalDiv.removeChild(fixedExpenseTotalDiv.lastChild);   
+    } 
+    var fixedTotalNode = createNew("p");
+    fixedTotalNode.textContent = "$" + userData.currentFixedTotal;
+    fixedExpenseTotalDiv.appendChild(fixedTotalNode);
 }
 // the end
 
