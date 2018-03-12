@@ -35,11 +35,9 @@ var hitEnter = function(event) {
         return;
     }
 };
-
-
 incomeContainer.addEventListener("keyup", hitEnter);
 
-// Chart
+//Donut Chart
 let myChart = document.getElementById("myChart").getContext("2d");
 
 let massPopChart = new Chart(myChart, {
@@ -77,3 +75,10 @@ let massPopChart = new Chart(myChart, {
     }
     }
 });
+
+$(".dateAPI").text(moment().format("LL"));
+
+
+
+
+
