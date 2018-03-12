@@ -7,8 +7,7 @@
     <title>Rev My $</title>
 
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -41,9 +40,10 @@
             <!--Daily Savings Graph -->
 
             <div class="container1-2">
-                <h4>Daily Savings Goal Tracker</h4>
-                <div>Pull in Graph API</div>
-                <div>Today's date API</div>
+                <div class="chartContainer">
+                  <canvas id="myChart"></canvas>
+                </div>
+                <div class="dateAPI"></div>
                 <p class="balanceCalculation">Daily Balance</p>
                     <input class="form-control " type="number" name="balance" id="balance" value="" autofocus disabled>
             </div> 
@@ -151,7 +151,10 @@
                 </div>
         </div>
     </div>
-    
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
     <script src="main.js"></script>
+
 </body>
 </html>

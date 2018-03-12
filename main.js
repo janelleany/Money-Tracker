@@ -76,7 +76,6 @@ var hitEnterforFixedExpense = function() {
     var newCategoryValue = fixedExpenseCategory.value;
     newCategoryTD.textContent = newCategoryValue;
     newTR.appendChild(newCategoryTD);
-
     var newAmountTD = createNew("td", "tg-lqy6");
     var newAmountValue = fixedExpenseInput.value;
     newAmountTD.textContent = "$" + newAmountValue;
@@ -107,3 +106,44 @@ var hitEnterforFixedExpense = function() {
 monthlyIncomeInput.addEventListener("keyup", hitEnterForIncome);
 savingsGoalInput.addEventListener("keyup", hitEnterForSavingsGoal);
 fixedExpenseInputButton.addEventListener("click", hitEnterforFixedExpense);
+
+//Donut Chart
+let myChart = document.getElementById("myChart").getContext("2d");
+
+let massPopChart = new Chart(myChart, {
+    type: "doughnut",
+    data: {
+        labels: ["Daily Spending Limit", "Amount Spent"],
+        datasets: [{
+            data: [
+                160,
+                60
+            ],
+            backgroundColor: [
+                "blue",
+                "white"
+            ],
+            borderWidth: 4,
+            borderColor: "white",
+            hoverBorderWidth: "black",
+            hoverBorderColor: "gray"
+        }]
+    },
+    options: {
+        title: {
+            display: true,
+            text: "Daily Savings Tracker",
+            fontSize: 25
+        },
+    legend: {
+        position: "bottom"
+    },
+    layout: {
+        padding: {
+            top: 10
+        }
+    }
+    }
+});
+$(".dateAPI").text(moment().format("LL"));
+

@@ -63,6 +63,7 @@ p {
 .container1-2 {
     display: block;
     height: 100%;
+    width: 100%;
     text-align: center;
 }
 
@@ -138,3 +139,9 @@ input {
 .tg .tg-lqy6{text-align:right;vertical-align:top}
 .tg .tg-dzkc{font-size:15px;font-family:"Comic Sans MS", cursive, sans-serif !important;;text-align:center;vertical-align:top}
 .tg .tg-yw4l{vertical-align:top}
+
+.chartContainer {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
