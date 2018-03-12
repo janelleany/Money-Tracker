@@ -56,12 +56,11 @@ var hitEnterForSavingsGoal = function(event) {
     }
 };
 
-
 monthlyIncomeInput.addEventListener("keyup", hitEnterForIncome);
 savingsGoalInput.addEventListener("keyup", hitEnterForSavingsGoal);
-incomeContainer.addEventListener("keyup", hitEnter);
 
-// Chart
+
+//Donut Chart
 let myChart = document.getElementById("myChart").getContext("2d");
 
 let massPopChart = new Chart(myChart, {
@@ -99,3 +98,5 @@ let massPopChart = new Chart(myChart, {
     }
     }
 });
+$(".dateAPI").text(moment().format("LL"));
+
