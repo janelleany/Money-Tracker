@@ -7,6 +7,9 @@ var fixedExpensesTable = document.querySelector("#fixedExpensesTable");
 var fixedExpenseInput = document.querySelector("#fixedExpenseInput");
 var fixedExpenseInputButton = document.querySelector("#fixedExpenseInputButton");
 var fixedExpenseCategory = document.querySelector("#fixedExpenseCategory");
+var fixedExpenseTotal = document.querySelector("#fixedExpenseTotal");
+
+var currentFixedTotal = 0;
 
 // variables: CREATE userData OBJECT FOR BUDGETER'S DATA
 var userData = {
@@ -16,7 +19,7 @@ var userData = {
     fixedExpenses: {
 
     }
-};
+}
 
 
 // function: CREATE A GENERIC NEW DOM ELEMENT & GIVE IT A CLASS & ATTRIBUTES
@@ -44,7 +47,8 @@ var hitEnterForIncome = function(event) {
     } else {
         return;
     }
-};
+}
+// the end
 
 // function: PRESS & RELEASE THE ENTER KEY EVENT HANDLER FOR SAVINGS
 var hitEnterForSavingsGoal = function(event) {
@@ -61,25 +65,38 @@ var hitEnterForSavingsGoal = function(event) {
     } else {
         return;
     }
-};
+}
+// the end
 
 
 // function: CLICK SUBMIT EVENT HANDLER FOR A FIXED EXPENSE
 var hitEnterforFixedExpense = function(event) {
     var newTR = createNew("tr", "newExpense");
     
-    var newAmountTD = createNew("td", "tg-yw4l");
-    newTD.textContent = " $" + fixedExpenseInput.value;
+    var newCategoryTD = createNew("td", "tg-yw4l");
+    newCategoryTD.textContent = fixedExpenseCategory.value;
+    newTR.appendChild(newCategoryTD);
 
-    var newCategory = createNew("td", "tg-lqy6");
+    var newAmountTD = createNew("td", "tg-lqy6");
+    newAmountTD.textContent = " $" + fixedExpenseInput.value;
+    newTR.appendChild(newAmountTD);
+    
+    fixedExpensesTable.appendChild(newTR);
+
+    var newestExpense = parseInt(fixedExpenseInput.value);
+
+    currentFixedTotal += newestExpense;
+
+    var fixedTotalNode = createNew("span");
+    fixedTotalNode.textContent = currentFixedTotal;
+    fixedExpenseTotal.appendChild(fixedTotalNode);
+
+    console.log(currentFixedTotal);
+}
+// the end
 
 
-    savingsGoalDiv.appendChild(newP);
-
-
-
-
+// logic: ADD EVENT LISTENERS
 monthlyIncomeInput.addEventListener("keyup", hitEnterForIncome);
 savingsGoalInput.addEventListener("keyup", hitEnterForSavingsGoal);
-
-fixedExpenseInput.addEventListener("click", hitEnterforFixedExpense);
+fixedExpenseInputButton.addEventListener("click", hitEnterforFixedExpense);
