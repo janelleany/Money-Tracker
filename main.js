@@ -3,12 +3,19 @@ var monthlyIncomeInput = document.querySelector("#monthlyIncomeInput");
 var incomeDiv = document.querySelector("#divForIncome");
 var savingsGoalInput = document.querySelector("#savingsGoal");
 var savingsGoalDiv = document.querySelector("#divForSavingsGoal");
+var fixedExpensesTable = document.querySelector("#fixedExpensesTable");
+var fixedExpenseInput = document.querySelector("#fixedExpenseInput");
+var fixedExpenseInputButton = document.querySelector("#fixedExpenseInputButton");
+var fixedExpenseCategory = document.querySelector("#fixedExpenseCategory");
 
 // variables: CREATE userData OBJECT FOR BUDGETER'S DATA
 var userData = {
     userName: "",
     income: 0,
-    savingsGoal: 0
+    savingsGoal: 0,
+    fixedExpenses: {
+
+    }
 };
 
 
@@ -57,8 +64,22 @@ var hitEnterForSavingsGoal = function(event) {
 };
 
 
+// function: CLICK SUBMIT EVENT HANDLER FOR A FIXED EXPENSE
+var hitEnterforFixedExpense = function(event) {
+    var newTR = createNew("tr", "newExpense");
+    
+    var newAmountTD = createNew("td", "tg-yw4l");
+    newTD.textContent = " $" + fixedExpenseInput.value;
+
+    var newCategory = createNew("td", "tg-lqy6");
+
+
+    savingsGoalDiv.appendChild(newP);
+
+
+
+
 monthlyIncomeInput.addEventListener("keyup", hitEnterForIncome);
 savingsGoalInput.addEventListener("keyup", hitEnterForSavingsGoal);
 
-
-console.log(userData);
+fixedExpenseInput.addEventListener("click", hitEnterforFixedExpense);

@@ -78,8 +78,8 @@
 
         <div class="container2-1">
             <h4>Today's Expenses</h4>
-            <!-- <div class="container2-1-1"> -->
-                    <div class="tg-wrap"><table class="tg" style="undefined;table-layout: fixed; width: 320px">
+                    <div class="tg-wrap">
+                      <table class="tg" style="undefined; table-layout: auto; width: 400px">
                             <colgroup>
                             <col style="width: 227px">
                             <col style="width: 93px">
@@ -92,56 +92,8 @@
                                 <td class="tg-yw4l"></td>
                                 <td class="tg-lqy6"></td>
                               </tr>
-                              <tr>
-                                <td class="tg-yw4l"></td>
-                                <td class="tg-lqy6"></td>
-                              </tr>
-                              <tr>
-                                <td class="tg-yw4l"></td>
-                                <td class="tg-lqy6"></td>
-                              </tr>
-                              <tr>
-                                <td class="tg-yw4l"></td>
-                                <td class="tg-lqy6"></td>
-                              </tr>
-                              <tr>
-                                <td class="tg-yw4l"></td>
-                                <td class="tg-lqy6"></td>
-                              </tr>
-                              <tr>
-                                <td class="tg-yw4l"></td>
-                                <td class="tg-lqy6"></td>
-                              </tr>
-                              <tr>
-                                <td class="tg-yw4l"></td>
-                                <td class="tg-lqy6"></td>
-                              </tr>
-                              <tr>
-                                <td class="tg-yw4l"></td>
-                                <td class="tg-lqy6"></td>
-                              </tr>
-                              <tr>
-                                <td class="tg-yw4l"></td>
-                                <td class="tg-lqy6"></td>
-                              </tr>
-                              <tr>
-                                <td class="tg-yw4l"></td>
-                                <td class="tg-lqy6"></td>
-                              </tr>
-                              <tr>
-                                 <td class="tg-yw4l"></td>
-                                 <td class="tg-lqy6"></td>
-                              </tr>
-                              <!-- <tr>
-                                 <td class="tg-yw4l"></td>
-                                 <td class="tg-lqy6"></td>
-                              </tr>
-                                 <tr>
-                                 <td class="tg-yw4l"></td>
-                                 <td class="tg-lqy6"></td>
-                             </tr> -->
-                            </table></div>
-            <!-- </div> -->
+                            </table>
+                          </div>
             <div class="container2-1-2">
                 <div>
                     <label for="todaysExpenses">Amount</label>
@@ -167,7 +119,7 @@
         <div class="container2-2">
             <h4>Fixed Expenses</h4>
             <!-- <div class="container2-1-1"> -->
-                    <div class="tg-wrap"><table class="tg" style="undefined;table-layout: fixed; width: 320px">
+                    <div class="tg-wrap"><table class="tg" id="fixedExpensesTable" style="undefined; table-layout: auto; width: 400px">
                             <colgroup>
                             <col style="width: 227px">
                             <col style="width: 93px">
@@ -180,62 +132,14 @@
                                 <td class="tg-yw4l"></td>
                                 <td class="tg-lqy6"></td>
                               </tr>
-                              <tr>
-                                <td class="tg-yw4l"></td>
-                                <td class="tg-lqy6"></td>
-                              </tr>
-                              <tr>
-                                <td class="tg-yw4l"></td>
-                                <td class="tg-lqy6"></td>
-                              </tr>
-                              <tr>
-                                <td class="tg-yw4l"></td>
-                                <td class="tg-lqy6"></td>
-                              </tr>
-                              <tr>
-                                <td class="tg-yw4l"></td>
-                                <td class="tg-lqy6"></td>
-                              </tr>
-                              <tr>
-                                <td class="tg-yw4l"></td>
-                                <td class="tg-lqy6"></td>
-                              </tr>
-                              <tr>
-                                <td class="tg-yw4l"></td>
-                                <td class="tg-lqy6"></td>
-                              </tr>
-                              <tr>
-                                <td class="tg-yw4l"></td>
-                                <td class="tg-lqy6"></td>
-                              </tr>
-                              <tr>
-                                <td class="tg-yw4l"></td>
-                                <td class="tg-lqy6"></td>
-                              </tr>
-                              <tr>
-                                <td class="tg-yw4l"></td>
-                                <td class="tg-lqy6"></td>
-                              </tr>
-                              <tr>
-                                 <td class="tg-yw4l"></td>
-                                 <td class="tg-lqy6"></td>
-                              </tr>
-                              <!-- <tr>
-                                 <td class="tg-yw4l"></td>
-                                <td class="tg-lqy6"></td>
-                              </tr>
-                              <tr>
-                                 <td class="tg-yw4l"></td>
-                                 <td class="tg-lqy6"></td>
-                              </tr> -->
                             </table></div>        
-            <!-- </div> -->
+
                 <div class="container2-1-2">
                     <div>
-                        <label for="todaysExpenses">Amount</label>
-                        <input class="form-control" type="number" name="expenses" id="todaysExpenses" value="" autofocus placeholder="Enter Expense Amount">
+                        <label for="fixedExpenses">Amount</label>
+                        <input class="form-control" type="number" name="expenses" id="fixedExpenseInput" value="" autofocus placeholder="Enter Expense Amount">
                     </div>
-                        <div class="form-group expenseCategory">
+                        <div class="form-group expenseCategory" style="display: flex; flex-direction: column;">
                                 <label for="fixedExpenseCategory">Expense Category</label>
                                 <select id="fixedExpenseCategory" class="form-control" name="expenseType">
                                   <option value="rent">Rent</option>
@@ -245,7 +149,7 @@
                                 </select>
                         </div>
                         <div class="buttons">
-                                <button data-type-button="submit" type="submit" class="btn btn-default">Submit</button>
+                                <button data-type-button="submit" type="submit" id="fixedExpenseInputButton" class="btn btn-default">Submit</button>
                         </div>
                 </div>
         </div>
