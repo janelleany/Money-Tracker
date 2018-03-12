@@ -59,6 +59,43 @@ var hitEnterForSavingsGoal = function(event) {
 
 monthlyIncomeInput.addEventListener("keyup", hitEnterForIncome);
 savingsGoalInput.addEventListener("keyup", hitEnterForSavingsGoal);
+incomeContainer.addEventListener("keyup", hitEnter);
 
+// Chart
+let myChart = document.getElementById("myChart").getContext("2d");
 
-console.log(userData);
+let massPopChart = new Chart(myChart, {
+    type: "doughnut",
+    data: {
+        labels: ["Daily Spending Limit", "Amount Spent"],
+        datasets: [{
+            data: [
+                160,
+                60
+            ],
+            backgroundColor: [
+                "blue",
+                "white"
+            ],
+            borderWidth: 4,
+            borderColor: "white",
+            hoverBorderWidth: "black",
+            hoverBorderColor: "gray"
+        }]
+    },
+    options: {
+        title: {
+            display: true,
+            text: "Daily Savings Tracker",
+            fontSize: 25
+        },
+    legend: {
+        position: "bottom"
+    },
+    layout: {
+        padding: {
+            top: 10
+        }
+    }
+    }
+});
