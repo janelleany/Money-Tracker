@@ -95,8 +95,9 @@ p {
 } */
 
 .container2-1-2 {
+    width: 400px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .container2-2 {
@@ -129,6 +130,7 @@ input {
 
 .buttons {
     display: block;
+    align-self: flex-end;
 }
 
 .tg  {border-collapse:collapse;border-spacing:0;border-color:#bbb;border-width:1px;border-style:solid;}
