@@ -33,7 +33,7 @@
                     <input class="form-control" type="number" name="savingsGoal" id="savingsGoal" value="" placeholder="Enter Monthly Savings Goal" required>
                     <div id="divForSavingsGoal"></div>
                     <p>Actual Monthly Savings</p>
-                    <input class="actualSavingsCalculation" type="number" name="savingsGoal" id="savingsGoal" value="" disabled/>
+                    <input class="actualSavingsCalculation" type="number" name="actualSavings" id="actualSavings" value="" disabled/>
                 </div>
             </div>
 
@@ -72,9 +72,9 @@
     <div class="container2">
 
         <div class="container2-1">
-            <h4>Today's Expenses</h4>
+            <h4>Today's Spending</h4>
                     <div class="tg-wrap">
-                      <table class="tg" style="undefined; table-layout: auto; width: 400px">
+                      <table class="tg" id="todaysSpendingTable" style="undefined; table-layout: auto; width: 400px">
                             <colgroup>
                             <col style="width: 227px">
                             <col style="width: 93px">
@@ -91,24 +91,24 @@
                           </div>
             <div class="container2-1-2">
                 <div>
-                    <label for="todaysExpenses">Amount</label>
-                    <input class="form-control" type="number" name="expenses" id="todaysExpenses" value="" autofocus placeholder="Enter Expense Amount">
+                    <label for="todaysSpendingInput">Amount</label>
+                    <input class="form-control" type="number" name="todaysSpendingInput" id="todaysSpendingInput" value="" autofocus placeholder="Enter Expense Amount">
                 </div>
-                <div class="form-group expenseCategory">
-                            <label for="todaysExpenseCategory">Expense Category</label>
-                            <select id="todaysExpenseCategory" class="form-control" name="expenseType">
+                <div class="form-group spendingCategory">
+                            <label for="todaysSpendingCategory">Expense Category</label>
+                            <select id="todaysSpendingCategory" class="form-control" name="todaysSpendingCategory">
                               <option value="Fuel">Fuel</option>
                               <option value="Shopping">Shopping</option>
                               <option value="Clothes">Clothes</option>
                               <option value="Gifts">Gifts</option>
                               <option value="Entertainment">Entertainment</option>
-                              <option value="Restaurant">Entertainment</option>
-                              <option value="Groceries">Entertainment</option>
+                              <option value="Restaurant">Restaurant</option>
+                              <option value="Groceries">Groceries</option>
                               <option value="Other">Other</option>
                             </select>
                 </div>
                     <div class="buttons">
-                            <button data-type-button="submit" type="submit" class="btn btn-default">Submit</button>
+                            <button data-type-button="submit" type="submit" id="todaysSpendingInputButton" class="btn btn-default">Submit</button>
                     </div>
             </div>
         </div>

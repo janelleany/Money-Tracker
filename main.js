@@ -9,19 +9,31 @@ var fixedExpenseInputButton = document.querySelector("#fixedExpenseInputButton")
 var fixedExpenseCategory = document.querySelector("#fixedExpenseCategory");
 var fixedExpenseTotalDiv = document.querySelector("#fixedExpenseTotal");
 
+var todaysSpendingTable = document.querySelector("#todaysSpendingTable");
+var todaysSpendingInput = document.querySelector("#todaysSpendingInput");
+var todaysSpendingInputButton = document.querySelector("#todaysSpendingInputButton");
+var todaysSpendingCategory = document.querySelector("#todaysSpendingCategory");
+var todaysSpendingTotalDiv = document.querySelector("#dailyTotal");
+
+
+
 // variables: CREATE userData OBJECT FOR BUDGETER'S DATA
 var userData = {
     userName: "",
     income: 0,
     savingsGoal: 0,
     currentFixedTotal: 0, 
+    currentDailySpendingTotal: 0,
     fixedExpenses: [
+
+    ],
+    todaysSpending: [
 
     ]
 }
 
 
-// function: CREATE A GENERIC NEW DOM ELEMENT & GIVE IT A CLASS & ATTRIBUTES
+// function: CREATE A GENERIC NEW NODE & GIVE IT A CLASS & ATTRIBUTES
 var createNew = function(tagName, className, attribute, attributeValue) {
     var newElement = document.createElement(tagName);
     newElement.classList.add(className);
@@ -102,10 +114,47 @@ var hitEnterforFixedExpense = function() {
 // the end
 
 
+// function: CLICK SUBMIT EVENT HANDLER FOR A PURCHASE
+var hitEnterforAPurchase = function() {
+    var newTR = createNew("tr");
+    var newCategoryTD = createNew("td", "tg-yw4l");
+    var newCategoryValue = todaysSpendingCategory.value;
+    newCategoryTD.textContent = newCategoryValue;
+    newTR.appendChild(newCategoryTD);
+    var newAmountTD = createNew("td", "tg-lqy6");
+    var newAmountValue = todaysSpendingInput.value;
+    newAmountTD.textContent = "$" + newAmountValue;
+    newTR.appendChild(newAmountTD);
+    
+    todaysSpendingTable.appendChild(newTR);
+
+    var newestPurchaseAmount = parseInt(todaysSpendingInput.value);
+
+    userData.currentDailySpendingTotal += newestPurchaseAmount;
+
+    var newestPurchase = {};
+    newestPurchase[newCategoryValue] = newAmountValue;
+    console.log(newestPurchase);
+    userData.todaysSpending.push(newestPurchase);
+    
+    while (todaysSpendingTotalDiv.hasChildNodes()) {
+        todaysSpendingTotalDiv.removeChild(todaysSpendingTotalDiv.lastChild);   
+    } 
+    var spendingTotalNode = createNew("p");
+    spendingTotalNode.textContent = "$" + userData.currentDailySpendingTotal;
+    todaysSpendingTotalDiv.appendChild(spendingTotalNode);
+}
+// the end
+
+
+
 // logic: ADD EVENT LISTENERS
 monthlyIncomeInput.addEventListener("keyup", hitEnterForIncome);
 savingsGoalInput.addEventListener("keyup", hitEnterForSavingsGoal);
 fixedExpenseInputButton.addEventListener("click", hitEnterforFixedExpense);
+todaysSpendingInputButton.addEventListener("click", hitEnterforAPurchase);
+
+
 
 //Donut Chart
 let myChart = document.getElementById("myChart").getContext("2d");
