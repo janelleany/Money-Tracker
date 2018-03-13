@@ -30,7 +30,7 @@ var userData = {
 
     ],
     playWithMoney: 0,
-    dailyLimit: 0,
+    dailyLimit: 1,
 }
 
 
