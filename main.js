@@ -1,8 +1,8 @@
 // variables: QUERY & NAME THE DOM ELEMENTS WE NEED TO WORK WITH
-var monthlyIncomeInput = document.querySelector("#monthlyIncomeInput");
-var incomeDiv = document.querySelector("#divForIncome");
-var savingsGoalInput = document.querySelector("#savingsGoal");
-var savingsGoalDiv = document.querySelector("#divForSavingsGoal");
+// var monthlyIncomeInput = document.querySelector("#monthlyIncomeInput");
+// var incomeDiv = document.querySelector("#divForIncome");
+// var savingsGoalInput = document.querySelector("#savingsGoal");
+// var savingsGoalDiv = document.querySelector("#divForSavingsGoal");
 var fixedExpensesTable = document.querySelector("#fixedExpensesTable");
 var fixedExpenseInput = document.querySelector("#fixedExpenseInput");
 var fixedExpenseInputButton = document.querySelector("#fixedExpenseInputButton");
@@ -14,6 +14,14 @@ var todaysSpendingInput = document.querySelector("#todaysSpendingInput");
 var todaysSpendingInputButton = document.querySelector("#todaysSpendingInputButton");
 var todaysSpendingCategory = document.querySelector("#todaysSpendingCategory");
 var todaysSpendingTotalDiv = document.querySelector("#dailyTotal");
+
+function getValue(id){
+    return document.querySelector(id).value;
+}
+
+function idSelect(id){
+    return document.querySelector(id);
+}
 
 
 
@@ -32,6 +40,24 @@ var userData = {
     ]
 }
 
+// Firebase
+//   var config = {
+//     apiKey: "AIzaSyAUyCTUG8Y0mYH8fJx7Iv-PPHwsMCtyBz4",
+//     authDomain: "money-tracker-51762.firebaseapp.com",
+//     databaseURL: "https://money-tracker-51762.firebaseio.com",
+//     projectId: "money-tracker-51762",
+//     storageBucket: "money-tracker-51762.appspot.com",
+//     messagingSenderId: "308376124791"
+//   };
+//   firebase.initializeApp(config);
+
+//   function addToFirebase(){
+//       firebaseRef = firebase.database().ref();
+
+//       var newCategoryValue = todaysSpendingCategory.value;
+
+//       firebaseRef.child("Text").set(newCategoryValue);
+//   }
 
 // function: CREATE A GENERIC NEW NODE & GIVE IT A CLASS & ATTRIBUTES
 var createNew = function(tagName, className, attribute, attributeValue) {
@@ -46,14 +72,15 @@ var createNew = function(tagName, className, attribute, attributeValue) {
 // function: PRESS & RELEASE THE ENTER KEY EVENT HANDLER FOR INCOME
 var hitEnterForIncome = function(event) {
     var keyHit = event.key;
+    var incomeDiv = idSelect("#divForIncome");
     if (keyHit === "Enter") {
         while (incomeDiv.hasChildNodes()) {
             incomeDiv.removeChild(incomeDiv.lastChild);   
         }
         var newP = createNew("p");
-        newP.textContent = "$" + monthlyIncomeInput.value;
+        newP.textContent = "$" + getValue("#monthlyIncomeInput");
         incomeDiv.appendChild(newP);
-        userData.income = monthlyIncomeInput.value;
+        userData.income = getValue("#monthlyIncomeInput");
         console.log(userData.income);
     } else {
         return;
@@ -65,14 +92,16 @@ var hitEnterForIncome = function(event) {
 // function: PRESS & RELEASE THE ENTER KEY EVENT HANDLER FOR SAVINGS
 var hitEnterForSavingsGoal = function(event) {
     var keyHit = event.key;
+    var savingGoalInput = getValue("#savingsGoal");
+    var savingsGoalDiv = idSelect("#divForSavingsGoal");
     if (keyHit === "Enter") {
         while (savingsGoalDiv.hasChildNodes()) {
             savingsGoalDiv.removeChild(savingsGoalDiv.lastChild);   
         }
         var newP = createNew("p");
-        newP.textContent = "$" + savingsGoalInput.value;
+        newP.textContent = "$" + savingsGoalInput;
         savingsGoalDiv.appendChild(newP);
-        userData.savingsGoal = savingsGoalInput.value;
+        userData.savingsGoal = savingsGoalInput;
         console.log(userData.savingsGoal);
     } else {
         return;
@@ -143,14 +172,22 @@ var hitEnterforAPurchase = function() {
     var spendingTotalNode = createNew("p");
     spendingTotalNode.textContent = "$" + userData.currentDailySpendingTotal;
     todaysSpendingTotalDiv.appendChild(spendingTotalNode);
+
+
+// function addToFirebase(){
+    firebaseRef = firebase.database().ref();
+
+    // var newCategoryValue = todaysSpendingCategory.value;
+
+    firebaseRef.child("Text").set(newCategoryValue);
 }
 // the end
 
 
 
 // logic: ADD EVENT LISTENERS
-monthlyIncomeInput.addEventListener("keyup", hitEnterForIncome);
-savingsGoalInput.addEventListener("keyup", hitEnterForSavingsGoal);
+idSelect("#monthlyIncomeInput").addEventListener("keyup", hitEnterForIncome);
+idSelect("#savingsGoal").addEventListener("keyup", hitEnterForSavingsGoal);
 fixedExpenseInputButton.addEventListener("click", hitEnterforFixedExpense);
 todaysSpendingInputButton.addEventListener("click", hitEnterforAPurchase);
 
@@ -195,4 +232,7 @@ let massPopChart = new Chart(myChart, {
     }
 });
 $(".dateAPI").text(moment().format("LL"));
+
+// Firebase Functions
+
 
