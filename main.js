@@ -14,8 +14,7 @@ var todaysSpendingInput = document.querySelector("#todaysSpendingInput");
 var todaysSpendingInputButton = document.querySelector("#todaysSpendingInputButton");
 var todaysSpendingCategory = document.querySelector("#todaysSpendingCategory");
 var todaysSpendingTotalDiv = document.querySelector("#dailyTotal");
-
-
+var todaysSpendingLimit = document.querySelector("#spendingLimit");
 
 // variables: CREATE userData OBJECT FOR BUDGETER'S DATA
 var userData = {
@@ -29,7 +28,9 @@ var userData = {
     ],
     todaysSpending: [
 
-    ]
+    ],
+    playWithMoney: 0,
+    dailyLimit: 0,
 }
 
 
@@ -43,6 +44,25 @@ var createNew = function(tagName, className, attribute, attributeValue) {
 // the end
 
 
+
+// function: CREATE CALCULATION FOR DAILY SPENDING LIMIT
+var calcDailyLimit = function() {
+    var daysInMonth = moment().daysInMonth();
+    userData.playWithMoney = userData.income - userData.currentFixedTotal - userData.savingsGoal;
+    var limit = userData.playWithMoney / daysInMonth;
+    userData.dailyLimit = limit;
+    while (todaysSpendingLimit.hasChildNodes()) {
+        todaysSpendingLimit.removeChild(todaysSpendingLimit.lastChild);   
+    }
+    var newP = createNew("p");
+    newP.textContent = "$" + Math.floor(userData.dailyLimit);
+    todaysSpendingLimit.appendChild(newP);
+    return limit;
+};
+
+
+
+
 // function: PRESS & RELEASE THE ENTER KEY EVENT HANDLER FOR INCOME
 var hitEnterForIncome = function(event) {
     var keyHit = event.key;
@@ -54,7 +74,7 @@ var hitEnterForIncome = function(event) {
         newP.textContent = "$" + monthlyIncomeInput.value;
         incomeDiv.appendChild(newP);
         userData.income = monthlyIncomeInput.value;
-        console.log(userData.income);
+        calcDailyLimit();
     } else {
         return;
     }
@@ -73,7 +93,7 @@ var hitEnterForSavingsGoal = function(event) {
         newP.textContent = "$" + savingsGoalInput.value;
         savingsGoalDiv.appendChild(newP);
         userData.savingsGoal = savingsGoalInput.value;
-        console.log(userData.savingsGoal);
+        calcDailyLimit();
     } else {
         return;
     }
@@ -110,6 +130,7 @@ var hitEnterforFixedExpense = function() {
     var fixedTotalNode = createNew("p");
     fixedTotalNode.textContent = "$" + userData.currentFixedTotal;
     fixedExpenseTotalDiv.appendChild(fixedTotalNode);
+    calcDailyLimit();
 }
 // the end
 
