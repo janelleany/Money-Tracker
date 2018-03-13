@@ -95,9 +95,9 @@ p {
 } */
 
 .container2-1-2 {
-    width: 400px;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .container2-2 {
@@ -131,6 +131,11 @@ input {
 .buttons {
     display: block;
     align-self: flex-end;
+}
+
+.tg-wrap {
+    display: flex;
+    justify-content: center;
 }
 
 .tg  {border-collapse:collapse;border-spacing:0;border-color:#bbb;border-width:1px;border-style:solid;}
