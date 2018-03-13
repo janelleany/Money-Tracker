@@ -60,7 +60,47 @@ var calcDailyLimit = function() {
     return limit;
 };
 
-
+//Donut 
+var renderDonut = function(data1, data2) {
+    let myChart = document.getElementById("myChart").getContext("2d");
+    var chartLimit = Math.floor(userData.dailyLimit) - Math.floor(userData.currentDailySpendingTotal);
+    var chartSpent = Math.floor(userData.currentDailySpendingTotal);
+    let massPopChart = new Chart(myChart, {
+        type: "doughnut",
+            data: {
+            labels: ["Daily Spending Limit", "Amount Spent"],
+            datasets: [{
+                data: [
+                    chartLimit,
+                    chartSpent,
+                ],
+                backgroundColor: [
+                    "blue",
+                    "white"
+                ],
+                borderWidth: 4,
+                borderColor: "white",
+                hoverBorderWidth: "black",
+                hoverBorderColor: "gray"
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: "Daily Savings Tracker",
+                fontSize: 25
+            },
+        legend: {
+            position: "bottom"
+        },
+        layout: {
+            padding: {
+                top: 10
+            }
+        }
+        }
+    });
+}
 
 
 // function: PRESS & RELEASE THE ENTER KEY EVENT HANDLER FOR INCOME
@@ -75,6 +115,7 @@ var hitEnterForIncome = function(event) {
         incomeDiv.appendChild(newP);
         userData.income = monthlyIncomeInput.value;
         calcDailyLimit();
+        renderDonut();
     } else {
         return;
     }
@@ -94,6 +135,7 @@ var hitEnterForSavingsGoal = function(event) {
         savingsGoalDiv.appendChild(newP);
         userData.savingsGoal = savingsGoalInput.value;
         calcDailyLimit();
+        renderDonut();
     } else {
         return;
     }
@@ -131,6 +173,7 @@ var hitEnterforFixedExpense = function() {
     fixedTotalNode.textContent = "$" + userData.currentFixedTotal;
     fixedExpenseTotalDiv.appendChild(fixedTotalNode);
     calcDailyLimit();
+    renderDonut();
 }
 // the end
 
@@ -164,6 +207,7 @@ var hitEnterforAPurchase = function() {
     var spendingTotalNode = createNew("p");
     spendingTotalNode.textContent = "$" + userData.currentDailySpendingTotal;
     todaysSpendingTotalDiv.appendChild(spendingTotalNode);
+    renderDonut();
 }
 // the end
 
@@ -175,45 +219,8 @@ savingsGoalInput.addEventListener("keyup", hitEnterForSavingsGoal);
 fixedExpenseInputButton.addEventListener("click", hitEnterforFixedExpense);
 todaysSpendingInputButton.addEventListener("click", hitEnterforAPurchase);
 
-
-
-//Donut Chart
-let myChart = document.getElementById("myChart").getContext("2d");
-
-let massPopChart = new Chart(myChart, {
-    type: "doughnut",
-    data: {
-        labels: ["Daily Spending Limit", "Amount Spent"],
-        datasets: [{
-            data: [
-                160,
-                60
-            ],
-            backgroundColor: [
-                "blue",
-                "white"
-            ],
-            borderWidth: 4,
-            borderColor: "white",
-            hoverBorderWidth: "black",
-            hoverBorderColor: "gray"
-        }]
-    },
-    options: {
-        title: {
-            display: true,
-            text: "Daily Savings Tracker",
-            fontSize: 25
-        },
-    legend: {
-        position: "bottom"
-    },
-    layout: {
-        padding: {
-            top: 10
-        }
-    }
-    }
-});
+// Display Date on the Screen
 $(".dateAPI").text(moment().format("LL"));
 
+// Display graph without information
+renderDonut();
