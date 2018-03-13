@@ -208,6 +208,7 @@ var hitEnterforAPurchase = function() {
     spendingTotalNode.textContent = "$" + userData.currentDailySpendingTotal;
     todaysSpendingTotalDiv.appendChild(spendingTotalNode);
     renderDonut();
+    // midnightTask();
 }
 // the end
 
@@ -222,5 +223,17 @@ todaysSpendingInputButton.addEventListener("click", hitEnterforAPurchase);
 // Display Date on the Screen
 $(".dateAPI").text(moment().format("LL"));
 
+
+// Reset Daily Spending at Midnight
+var midNightTask = function () {
+    var now = moment();
+    var midnight = moment().endOf("day");
+    if (now === midnight) {
+        userData.currentDailySpendingTotal = 0;
+        $("#todaysSpendingTable tr>td").remove();   
+    }
+};
+
+  
 // Display graph without information
 renderDonut();
