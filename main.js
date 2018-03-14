@@ -16,6 +16,8 @@ var todaysSpendingCategory = document.querySelector("#todaysSpendingCategory");
 var todaysSpendingTotalDiv = document.querySelector("#dailyTotal");
 var todaysSpendingLimit = document.querySelector("#spendingLimit");
 
+var db = firebase.firestore();
+
 // variables: CREATE userData OBJECT FOR BUDGETER'S DATA
 var userData = {
     userName: "",
@@ -32,6 +34,18 @@ var userData = {
     playWithMoney: 0,
     dailyLimit: 1,
 }
+
+// function: WRITES DATA TO FIREBASE 
+var writeUserData = function() {
+    db.collection("users").doc("001").set(userData)
+    .then(function(){
+        alert("your data has been stored");
+    })
+    .catch(function(error) {
+        console.log("this shit don't work because", error);
+    })
+}
+
 
 
 // function: CREATE A GENERIC NEW NODE & GIVE IT A CLASS & ATTRIBUTES
@@ -61,7 +75,7 @@ var calcDailyLimit = function() {
 };
 
 //Donut 
-var renderDonut = function(data1, data2) {
+var renderDonut = function() {
     let myChart = document.getElementById("myChart").getContext("2d");
     var chartLimit = Math.floor(userData.dailyLimit) - Math.floor(userData.currentDailySpendingTotal);
     var chartSpent = Math.floor(userData.currentDailySpendingTotal);
@@ -136,6 +150,7 @@ var hitEnterForSavingsGoal = function(event) {
         userData.savingsGoal = savingsGoalInput.value;
         calcDailyLimit();
         renderDonut();
+        writeUserData();
     } else {
         return;
     }
@@ -208,7 +223,6 @@ var hitEnterforAPurchase = function() {
     spendingTotalNode.textContent = "$" + userData.currentDailySpendingTotal;
     todaysSpendingTotalDiv.appendChild(spendingTotalNode);
     renderDonut();
-    // midnightTask();
 }
 // the end
 
