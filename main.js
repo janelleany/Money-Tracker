@@ -75,22 +75,25 @@ var renderDonut = function(data1, data2) {
                     chartSpent,
                 ],
                 backgroundColor: [
-                    "blue",
-                    "white"
+                    "#304FFE",
+                    "#9FA8DA"
                 ],
-                borderWidth: 4,
+                borderWidth: 1,
                 borderColor: "white",
                 hoverBorderWidth: "black",
-                hoverBorderColor: "gray"
+                hoverBorderColor: "black"
             }]
         },
         options: {
             title: {
                 display: true,
                 text: "Daily Savings Tracker",
-                fontSize: 25
+                fontSize: 25,
+                fontColor: "black"
+
             },
         legend: {
+            fontColor: "black",
             position: "bottom"
         },
         layout: {
@@ -237,3 +240,23 @@ var midNightTask = function () {
   
 // Display graph without information
 renderDonut();
+
+// Granim
+
+var granimInstance = new Granim({
+    element: '#canvas-basic',
+    name: 'basic-gradient',
+    direction: 'left-right', // 'diagonal', 'top-bottom', 'radial'
+    opacity: [1, 1],
+    isPausedWhenNotInView: true,
+    states : {
+        "default-state": {
+            gradients: [
+                ['#AA076B', '#61045F'],
+                ['#02AAB0', '#00CDAC'],
+                ['#DA22FF', '#9733EE']
+            ],
+            transitionSpeed: 8000,
+        }
+    }
+});
