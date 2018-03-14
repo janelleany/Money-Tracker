@@ -93,6 +93,7 @@ var renderDonut = function(data1, data2) {
 
             },
         legend: {
+            fontColor: "black",
             position: "bottom"
         },
         layout: {
