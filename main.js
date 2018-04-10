@@ -16,6 +16,8 @@ var todaysSpendingCategory = document.querySelector("#todaysSpendingCategory");
 var todaysSpendingTotalDiv = document.querySelector("#dailyTotal");
 var todaysSpendingLimit = document.querySelector("#spendingLimit");
 
+var dailyBalance = document.querySelector();
+
 var db = firebase.firestore();
 
 // variables: CREATE userData OBJECT FOR BUDGETER'S DATA
